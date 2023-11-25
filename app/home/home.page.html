@@ -1,29 +1,57 @@
-<ion-header [translucent]="true" class="ion-text-center">
-  <ion-toolbar>
-    <ion-title >
-      PetStore
+<ion-header  class="ion-text-center ion-no-border" >
+  <ion-toolbar color="primary" >
+    
+    <ion-title class="header_title"  color="secondary">
+      <ion-icon name="paw-sharp" id="paw_title" size="md"></ion-icon>
+      Petstore
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
 
 
-  <ion-button (click)="filtrarPorOrdemId()">Filtrar por ID</ion-button>
-  <ion-button (click)="filtrarPorOrdemAlfabetica()">Filtrar por Type</ion-button>
-  <ion-button (click)="filtrarPorOrdemPreco()">Filtrar por Price</ion-button>
 
-  <ion-card *ngFor="let pet of petsFiltrados" >
+
+
+
+<ion-content color="primary" class="ion-text-center">
+  <div>
+    <h1 class="pets_title">Pets Disponiveis:</h1>
+    <hr />
+  </div>
+
+  <ion-card *ngFor="let pet of petsFiltrados" class="card_primary">
     <ion-card-header>
-      <ion-card-title>{{ pet.type }}</ion-card-title>
-      <ion-card-subtitle>{{ pet.price }}</ion-card-subtitle>
+      <ion-card-title class="card_title">{{ pet.type }}</ion-card-title>
+      <ion-card-subtitle class="card_price">{{ pet.price | currency:'BRL' }}</ion-card-subtitle>
     </ion-card-header>
-   
-    <ion-card-content>
-      Identificação: {{ pet.id }}
+
+    <ion-card-content class="card_id">
+      Id: {{ pet.id }}
     </ion-card-content>
   </ion-card>
 
-</ion-content>
 
 
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="secondary">
+      <ion-icon name="funnel" size="large"></ion-icon>
+    </ion-fab-button>
+
+    <!-- Opções do botão principal -->
+    <ion-fab-list side="top">
+      <ion-label class="button_text">Filtrar pelo Preço</ion-label>
+      <ion-fab-button color="secondary" (click)="filtrarPorOrdemPreco()">
+        <ion-icon name="cash-outline" size="large"></ion-icon>
+      </ion-fab-button>
+      <ion-label class="button_text">Filtrar por Nome</ion-label>
+      <ion-fab-button color="secondary" (click)="filtrarPorOrdemAlfabetica()">
+        <ion-icon name="reader-outline" size="large"></ion-icon>
+      </ion-fab-button>
+      <ion-label class="button_text">Filtrar por Id</ion-label>
+      <ion-fab-button color="secondary" (click)="filtrarPorOrdemId()">
+        <ion-icon name="information-sharp" size="large"></ion-icon>
+      </ion-fab-button>
+
+    </ion-fab-list>
+  </ion-fab>

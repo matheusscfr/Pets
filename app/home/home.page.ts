@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpService } from './../services/http.service'
+import { HttpService, Pet } from './../services/http.service'
 
 
 @Component({
@@ -10,9 +10,8 @@ import { HttpService } from './../services/http.service'
 
 export class HomePage  {
 
-  pets: any[] = [];
-  petsFiltrados: any[] = [];
-  filterId: Number = 1;
+  pets: Pet[] = [];
+  petsFiltrados: Pet[] = [];
   constructor(private httpService: HttpService) {
     this.carregarPets();
   }
@@ -31,17 +30,18 @@ export class HomePage  {
 
   filtrarPorOrdemId() {
 
-    this.petsFiltrados = this.pets.slice().sort((a, b) => b.id - a.id);
+    this.petsFiltrados = this.pets.sort((a, b) => b.id + a.id);
   }
 
   filtrarPorOrdemAlfabetica() {
 
-    this.petsFiltrados = this.pets.slice().sort((a, b) => a.type.localeCompare(b.type));
+    this.petsFiltrados = this.pets.sort((a, b) => a.type.localeCompare(b.type));
   }
 
   filtrarPorOrdemPreco() {
 
-    this.petsFiltrados = this.pets.slice().sort((a, b) => a.price + b.price);
+    this.petsFiltrados = this.pets.sort((a, b) => a.price - b.price);
   }
+  
   }
 

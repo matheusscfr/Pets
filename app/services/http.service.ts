@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class HttpService {
+
   private apiUrl = 'http://petstore-demo-endpoint.execute-api.com/petstore/pets/';
 
 
@@ -13,6 +14,14 @@ export class HttpService {
 
 
   consumirPets() {
-    return this.http.get<any[]>(this.apiUrl);
+    return this.http.get<Pet[]>(this.apiUrl);
   }
+
+ 
+}
+export interface Pet {
+  id: number;
+  name: string;
+  type: string;
+  price: number;
 }
