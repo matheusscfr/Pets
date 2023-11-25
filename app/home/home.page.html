@@ -1,0 +1,29 @@
+<ion-header [translucent]="true" class="ion-text-center">
+  <ion-toolbar>
+    <ion-title >
+      PetStore
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+  <ion-button (click)="filtrarPorOrdemId()">Filtrar por ID</ion-button>
+  <ion-button (click)="filtrarPorOrdemAlfabetica()">Filtrar por Type</ion-button>
+  <ion-button (click)="filtrarPorOrdemPreco()">Filtrar por Price</ion-button>
+
+  <ion-card *ngFor="let pet of petsFiltrados" >
+    <ion-card-header>
+      <ion-card-title>{{ pet.type }}</ion-card-title>
+      <ion-card-subtitle>{{ pet.price }}</ion-card-subtitle>
+    </ion-card-header>
+   
+    <ion-card-content>
+      Identificação: {{ pet.id }}
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
+
+
