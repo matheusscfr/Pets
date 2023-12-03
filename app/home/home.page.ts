@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpService, Pet } from './../services/http.service'
+import { HttpService } from './../services/http.service'
+import { Pet } from '../models/pets-interface';
 
 
 @Component({
@@ -12,6 +13,7 @@ export class HomePage  {
 
   pets: Pet[] = [];
   petsFiltrados: Pet[] = [];
+
   constructor(private httpService: HttpService) {
     this.carregarPets();
   }
@@ -27,10 +29,11 @@ export class HomePage  {
       }
     });
   }
+//Funções dos botões de Filtro
 
   filtrarPorOrdemId() {
 
-    this.petsFiltrados = this.pets.sort((a, b) => b.id + a.id);
+    this.petsFiltrados = this.pets.sort((a, b) => a.id - b.id);
   }
 
   filtrarPorOrdemAlfabetica() {

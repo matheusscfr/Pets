@@ -19,7 +19,7 @@
     <h1 class="pets_title">Pets Disponiveis:</h1>
     <hr />
   </div>
-
+  <!-- Card aonde os dados da API são aprensetados -->
   <ion-card *ngFor="let pet of petsFiltrados" class="card_primary">
     <ion-card-header>
       <ion-card-title class="card_title">{{ pet.type }}</ion-card-title>
@@ -38,12 +38,13 @@
       <ion-icon name="funnel" size="large"></ion-icon>
     </ion-fab-button>
 
-    <!-- Opções do botão principal -->
+    <!-- Botões -->
     <ion-fab-list side="top">
       <ion-label class="button_text">Filtrar pelo Preço</ion-label>
       <ion-fab-button color="secondary" (click)="filtrarPorOrdemPreco()">
-        <ion-icon name="cash-outline" size="large"></ion-icon>
+        <ion-icon name="cash-outline" size="large" ></ion-icon>
       </ion-fab-button>
+
       <ion-label class="button_text">Filtrar por Nome</ion-label>
       <ion-fab-button color="secondary" (click)="filtrarPorOrdemAlfabetica()">
         <ion-icon name="reader-outline" size="large"></ion-icon>
